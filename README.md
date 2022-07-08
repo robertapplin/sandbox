@@ -1,3 +1,3 @@
 # sandbox
 
-**C++ sanbox:** https://godbolt.org/
+[C++ sandbox](https://godbolt.org/)
