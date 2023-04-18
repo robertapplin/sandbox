@@ -1,4 +1,4 @@
-broker_url = "pyamqp://guest@localhost//"
+broker_url = "pyamqp://"
 result_backend = "rpc://"
 
 task_serializer = "json"
