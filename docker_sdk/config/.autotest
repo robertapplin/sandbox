@@ -1,0 +1,5 @@
+[setup]
+search_directories = /app/search/
+
+output_directory = /app/output/
+
