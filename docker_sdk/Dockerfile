@@ -26,5 +26,9 @@ RUN mkdir search && mkdir output
 COPY /config/.autotest /root/.autotest
 
 # THIS SHOULD BE A VOLUME OR MOUNT IN THE DOCKER COMPOSE FILE
-COPY test.py /app/search/test.py
-COPY usercode.py /app/search/usercode.py
+COPY /config/test.py /app/search/test.py
+COPY /config/usercode.py /app/search/usercode.py
+COPY /config/run_autotest.sh /app/run_autotest.sh
+
+# This shell script will be executed upon running the container
+ENTRYPOINT ["/app/run_autotest.sh"]
