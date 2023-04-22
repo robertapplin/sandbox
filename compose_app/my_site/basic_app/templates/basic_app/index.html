@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+{{ content }}
+    <form autocomplete="off" method="post">
+      {% csrf_token %}
+      <label>Question</label><br>
+      <input type="text" id="question" name="question" placeholder="Your question" required><br>
+      <input type="submit" value="Send question">
+    </form>
+  </body>
+</html>
