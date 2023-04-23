@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect, render
 from django.views import generic
 
-from .models import Question
+from .tasks import save_question
 
 
 class IndexView(generic.TemplateView):
@@ -23,7 +23,6 @@ class IndexView(generic.TemplateView):
     def post(self, request: HttpRequest) -> HttpResponse:
         question_text = request.POST["question"]
 
-        question = Question(question_text=question_text)
-        question.save()
+        save_question.delay(question_text)
 
         return redirect("basic_app:index")

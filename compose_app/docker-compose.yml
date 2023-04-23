@@ -12,8 +12,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: mypassword
     depends_on:
-      db:
-        condition: service_healthy
+      - worker
   db:
     image: postgres
     restart: always
@@ -25,3 +24,26 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+  worker:
+    restart: unless-stopped
+    build: ./my_site
+    command: celery -A basic_app worker --loglevel=INFO --concurrency 1
+    environment:
+      DB_HOST: db
+      DB_NAME: mydb
+      DB_USER: postgres
+      DB_PASSWORD: mypassword
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+  redis:
+    restart: unless-stopped
+    image: redis
+    healthcheck:
+      test: redis-cli ping
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
