@@ -9,7 +9,7 @@ services:
     environment:
       DB_HOST: db
       DB_NAME: mydb
-      DB_USER: myuser
+      DB_USER: postgres
       DB_PASSWORD: mypassword
     depends_on:
       db:
@@ -19,7 +19,6 @@ services:
     restart: always
     environment:
       POSTGRES_DB: mydb
-      POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
     healthcheck:
       test: pg_isready -U postgres
