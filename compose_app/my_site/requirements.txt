@@ -1,3 +1,4 @@
 celery[redis]
 Django
 psycopg2
+PyQt5
