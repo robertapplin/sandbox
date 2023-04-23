@@ -6,6 +6,8 @@ good composition for scalability. It will help me learn how services link to eac
 
 ## Troubleshooting
 
+### Check if ports are accessible
+
 To check if you can connect to a specific port on a service (A), from another service (B), enter service B:
 
 ```sh
@@ -22,5 +24,26 @@ Run this command:
 
 ```sh
 nc -vz <name-of-service-A> <port-on-service-A>
+```
+
+### ProgrammingError: relation "django_session" does not exist
+
+This indicates the initial migrate from the database has not been run. Exec into the web app container and run:
+
+```sh
+python manage.py migrate
+```
+
+You will then need to make the migrations for your own app, and perform the migration:
+
+```sh
+python manage.py makemigrations basic_app
+python manage.py migrate
+```
+
+And finally, you probably haven't created a superuser yet:
+
+```sh
+python manage.py createsuperuser
 ```
 

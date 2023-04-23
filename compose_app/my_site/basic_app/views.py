@@ -14,8 +14,9 @@ class IndexView(generic.TemplateView):
 
     def get(self, request: HttpRequest) -> HttpResponse:
         """Handles a get request."""
+        session_key = request.session.session_key
         context = {
-            "content": "This is some content",
+            "content": f"This is some content for session key: {session_key}",
         }
         return render(request, self.template_name, context)
 
