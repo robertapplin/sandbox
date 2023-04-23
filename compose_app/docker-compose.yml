@@ -49,7 +49,7 @@ services:
       timeout: 5s
       retries: 5
   xvfb:
-    build: ./my_site
+    build: ./xvfb
     command: Xvfb :0 -core -noreset -screen 0 640x480x24
     environment:
       DISPLAY: ":0"
