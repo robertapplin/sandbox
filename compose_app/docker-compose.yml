@@ -48,14 +48,4 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-  xvfb:
-    build: ./xvfb
-    command: Xvfb :0 -core -noreset -screen 0 640x480x24
-    environment:
-      DISPLAY: ":0"
-    healthcheck:
-      test: ps -ef | grep xvfb
-      interval: 5s
-      timeout: 5s
-      retries: 5
 
