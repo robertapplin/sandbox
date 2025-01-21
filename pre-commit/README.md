@@ -1,7 +1,5 @@
 # pre-commit
 
-## pre-commit run
-
 Run a specific hook on a specific file:
 
 ```sh
