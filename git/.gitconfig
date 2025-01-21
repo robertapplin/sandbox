@@ -1,0 +1,11 @@
+[user]
+#    name = Robert Applin
+#    email = 
+[alias]
+    test-pr = "!f() { git fetch $1 pull/$2/merge:pr/$2-merged && git checkout pr/$2-merged; }; f"
+    cap = "!f() { git commit --amend --no-edit && git push -f origin $(git symbolic-ref --short HEAD); }; f"
+    replace = "!f() { find . -type f -exec sed -i 's/$1/$2/g' {} +; }; f"
+[credential]
+    helper = cache --timeout 7200
+[credential "helperselector"]
+    selected = manager
