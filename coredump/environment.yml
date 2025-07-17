@@ -1,0 +1,9 @@
+name: dev-env
+
+channels:
+  - conda-forge
+
+dependencies:
+  - cmake
+  - compilers
+  - ninja
