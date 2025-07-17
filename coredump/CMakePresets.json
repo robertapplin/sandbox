@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 29,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "description": "Inherited by all other presets",
+      "binaryDir": "${sourceDir}/../build",
+      "hidden": true
+    },
+    {
+      "name": "ninja",
+      "description": "Build options for a Ninja generator",
+      "inherits": [
+        "base"
+      ],
+      "generator": "Ninja"
+    },
+    {
+      "name": "win-vs",
+      "description": "Build options for a Windows build using Visual Studio 2022",
+      "inherits": [
+        "base"
+      ],
+      "generator": "Visual Studio 17 2022",
+      "toolset": "v142"
+    }
+  ]
+}
