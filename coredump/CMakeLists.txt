@@ -4,10 +4,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-if(NOT WIN32)
+if(UNIX AND NOT APPLE)
   # Add debug info for all builds
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
-else()
+elseif(WIN32)
   # Add debug info for all builds
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zi")
   # Disable optimization in Debug builds for better debugging
