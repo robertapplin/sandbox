@@ -21,7 +21,7 @@ public:
 
   virtual void subscribe(IInvokePresenter *presenter) = 0;
 
-  virtual void setLabel(std::string const &text) = 0;
+  virtual void invokeAddLabel(std::string const &text) = 0;
 };
 
 class InvokeView final : public QWidget, public IInvokeView {
@@ -33,10 +33,13 @@ public:
 
   void subscribe(IInvokePresenter *presenter) override;
 
-  void setLabel(std::string const &text) override;
+  void invokeAddLabel(std::string const &text) override;
 
 private slots:
   void notifyButtonClicked();
+
+  // Arguments must be passed by value to avoid
+  void addLabel(std::string text);
 
 private:
   Ui::InvokeGUIWidget m_uiForm;

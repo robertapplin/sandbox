@@ -10,6 +10,7 @@
 
 #include <string>
 #include <memory>
+#include <thread>
 
 
 class IInvokeView;
@@ -25,11 +26,16 @@ class InvokePresenter final : public IInvokePresenter {
 
 public:
   InvokePresenter(std::unique_ptr<IInvokeModel> model, IInvokeView *view);
-  ~InvokePresenter() override = default;
+  ~InvokePresenter() override;
 
   void handleButtonClicked() override;
 
 private:
+  void run();
+
   std::unique_ptr<IInvokeModel> m_model;
   IInvokeView *m_view;
+
+  std::thread m_backgroundThread;
+  bool m_threadStarted;
 };
