@@ -10,6 +10,7 @@
 
 #include <string>
 #include <memory>
+#include <thread>
 
 
 class IPollView;
@@ -19,17 +20,26 @@ public:
   virtual ~IPollPresenter() = default;
 
   virtual void handleButtonClicked() = 0;
+
+  virtual void poll() = 0;
 };
 
 class PollPresenter final : public IPollPresenter {
 
 public:
   PollPresenter(std::unique_ptr<IPollModel> model, IPollView *view);
-  ~PollPresenter() override = default;
+  ~PollPresenter() override;
 
   void handleButtonClicked() override;
 
+  void poll() override;
+
 private:
+  void run();
+
   std::unique_ptr<IPollModel> m_model;
   IPollView *m_view;
+
+  std::thread m_backgroundThread;
+  bool m_threadStarted;
 };

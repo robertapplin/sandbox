@@ -9,6 +9,7 @@
 #include <string>
 #include "ui_PollGUIWidget.h"
 
+#include <QEvent>
 #include <QObject>
 #include <QWidget>
 
@@ -21,7 +22,7 @@ public:
 
   virtual void subscribe(IPollPresenter *presenter) = 0;
 
-  virtual void setLabel(std::string const &text) = 0;
+  virtual void addLabel(std::string const &text) = 0;
 };
 
 class PollView final : public QWidget, public IPollView {
@@ -33,7 +34,9 @@ public:
 
   void subscribe(IPollPresenter *presenter) override;
 
-  void setLabel(std::string const &text) override;
+  void addLabel(std::string const &text) override;
+
+  bool event(QEvent* event) override;
 
 private slots:
   void notifyButtonClicked();

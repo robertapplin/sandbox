@@ -12,7 +12,7 @@
 #include <thread>
 
 InvokePresenter::InvokePresenter(std::unique_ptr<IInvokeModel> model, IInvokeView *view) : m_model(std::move(model)), m_view(view),
- m_backgroundThread(), m_threadStarted(false) {
+  m_backgroundThread(), m_threadStarted(false) {
   // Use a subscriber to avoid Qt connections in the presenter
   m_view->subscribe(this);
 }

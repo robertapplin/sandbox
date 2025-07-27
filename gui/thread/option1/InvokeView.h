@@ -38,7 +38,7 @@ public:
 private slots:
   void notifyButtonClicked();
 
-  // Arguments must be passed by value to avoid
+  // Arguments must be passed by value
   void addLabel(std::string text);
 
 private:

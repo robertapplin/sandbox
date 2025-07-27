@@ -9,8 +9,10 @@
 #include "PollPresenter.h"
 
 #include <string>
-#include <QString>
 
+#include <QEvent>
+#include <QLabel>
+#include <QString>
 
 PollView::PollView(QWidget *parent) : QWidget(parent), m_presenter() {
   m_uiForm.setupUi(this);
@@ -27,6 +29,17 @@ void PollView::notifyButtonClicked() {
   m_presenter->handleButtonClicked();
 }
 
-void PollView::setLabel(std::string const &text) {
-  m_uiForm.lbCount->setText(QString::fromStdString(text));
+bool PollView::event(QEvent* event) {
+  if (event->type() == QEvent::MouseButtonRelease) {
+    // Poll from the GUI thread
+    if (m_presenter) {
+      m_presenter->poll();
+    }
+  }
+
+  return QWidget::event(event);
+}
+
+void PollView::addLabel(std::string const &text) {
+  this->layout()->addWidget(new QLabel(QString::fromStdString(text)));
 }

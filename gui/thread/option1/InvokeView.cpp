@@ -10,6 +10,7 @@
 
 #include <string>
 
+#include <QLabel>
 #include <QMetaObject>
 #include <QMetaType>
 #include <QString>
