@@ -1,5 +1,4 @@
-Build
-#####
+# Build
 
 1. Configure and generate the project with:
 
@@ -13,8 +12,7 @@ cmake . -B build --preset ninja
 cd build && cmake --build .
 ```
 
-Linux Setup
-###########
+# Linux Setup
 
 1. Check and then set the core dump size:
 
