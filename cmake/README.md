@@ -1,5 +1,4 @@
-Visual Studio Native Support
-############################
+# Visual Studio Native Support
 
 The `CMakeLists.txt` are loaded directly. This means when a `CMakeLists.txt` is changed, Visual Studio will automatically reconfigure and generate.
 
