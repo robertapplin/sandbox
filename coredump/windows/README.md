@@ -1,5 +1,4 @@
-Build
-#####
+# Build
 
 1. Configure and generate the project with:
 
@@ -13,8 +12,7 @@ cmake . -B build --preset win-vs
 cd build && cmake --build .
 ```
 
-Windows Setup
-#############
+# Windows Setup
 
 The key to this is to ensure when you build the executable, there are `.pdb` files which are generated alongside it.
 
